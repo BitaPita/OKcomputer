@@ -1,13 +1,10 @@
-from django.contrib import admin
-from django.urls import path, include
-from .views import login, signup
+from django.urls import path
+from . import views
 
-
+app_name = 'house'
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('houses.url')),
-    path('users/', 'users.url'),
-
-    path('', login),
-    path('', signup)
+    path('', views.home_view, name='homepage'),
+    path('edithouse/<int:pk>/',views.edithouse, name='edithouse'),
+    path('add/',views.house_create, name='add'),
+    path('deletehouse/<int:pk>/', views.deletehouse, name='deletehouse')
 ]
